@@ -12,8 +12,8 @@ function toggleCursor (cardTile: Sprite, cursorOn: boolean) {
 function changeCursorPositionBy (changeX: number, changeY: number) {
     if (selectable) {
         let newX: number = Math.clamp(0, 3, cursorX + changeX);
-let newY: number = Math.clamp(0, 3, cursorY + changeY);
-moveCursor(newX, newY)
+        let newY: number = Math.clamp(0, 3, cursorY + changeY);
+        moveCursor(newX, newY)
     }
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -24,7 +24,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         cardImageSprite = sprites.create(cardImages[targetTypeNum], 0)
         cardImageSprite.setPosition(targetTile.x, targetTile.y)
         cardImageSprite.layer = 2;
-revealedCards[cursorX][cursorY] = true
+        revealedCards[cursorX][cursorY] = true
         if (previousCardPosX != null && previousCardPosY != null) {
             timer.after(500, function () {
                 if (targetTypeNum == previousCardType) {
@@ -40,12 +40,12 @@ revealedCards[cursorX][cursorY] = true
                     cardImageSprite.destroy()
                     previousCardImageSprite.destroy()
                 }
-                previousCardPosX = null;
-previousCardPosY = null;
-previousCardImageSprite = null;
-previousCardType = null;
-selectable = true
-            })
+                previousCardPosX = null
+                previousCardPosY = null
+                previousCardImageSprite = null
+                previousCardType = null
+                selectable = true
+            });
         } else {
             previousCardPosX = cursorX
             previousCardPosY = cursorY
